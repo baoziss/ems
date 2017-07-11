@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="default" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="input">/ems/error/catchError.jsp</result>
+		</global-results>
+	</package>
+	
+	<include file="com/baizhi/struts/struts-user.xml" />
+	<include file="com/baizhi/struts/struts-emp.xml" />
+	<include file="com/baizhi/struts/struts-dept.xml" />
+	
+
+</struts>

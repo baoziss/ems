@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<!-- user模块 -->
+	<package name="user" extends="default" >
+		<!-- 跳转错误页面 -->
+		<global-results>
+			<result name="input">/ems/error/catchError.jsp</result>
+		</global-results>
+		<action name="login" class="com.baizhi.action.UserAction" method="login">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/dept</param>
+				<param name="actionName">queryAll</param>
+			</result>
+			<result name="error" type="redirect">/login.jsp?mess=${mess}</result>
+		</action>
+		<action name="regist" class="com.baizhi.action.UserAction" method="regist">
+			<result name="success">/login.jsp</result>
+			<result name="error" type="redirect">/ems/user/regist.jsp?mess=${mess}</result>
+		</action>
+		<action name="imageCode" class="com.baizhi.action.UserAction" method="imageCode"/>
+	</package>
+
+</struts>

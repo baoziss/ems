@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<constant name="struts.devMode" value="false" />
+	
+	<!-- dept模块 -->
+	<package name="dept" extends="default" namespace="/dept">
+		
+		<action name="queryAll" class="com.baizhi.action.DeptAction" method="queryAll">
+			<result name="success">/ems/dept/deptlist.jsp</result>
+		</action>
+		<!-- 添加部门 -->
+		<action name="addDept" class="com.baizhi.action.DeptAction" method="addDept">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/dept</param>
+				<param name="actionName">queryAll</param>
+			</result>
+		</action>
+		<!-- 删除部门 -->
+		<action name="dropDept" class="com.baizhi.action.DeptAction" method="dropDept">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/dept</param>
+				<param name="actionName">queryAll</param>
+			</result>
+		</action>
+		<!-- 修改部门信息 -->
+		<action name="getDeptChange" class="com.baizhi.action.DeptAction" method="getDeptChange">
+			<result>/ems/dept/updateDept.jsp</result>
+		</action>
+		<action name="changeDept" class="com.baizhi.action.DeptAction" method="changeDept">
+			<result type="redirectAction">
+				<param name="namespace">/dept</param>
+				<param name="actionName">queryAll</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>

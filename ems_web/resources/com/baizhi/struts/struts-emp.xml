@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	
+	<!-- emp模块 -->
+	<package name="emp" extends="default" namespace="/emp">
+		<interceptors>
+			<interceptor name="pageNum" class="com.baizhi.inter.PageNumInterceptor"/>
+			<interceptor-stack name="pageNum">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="pageNum" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="pageNum" />
+		<action name="queryAll" class="com.baizhi.action.EmpAction" method="queryAll">
+			<result>/page-download-ems/emp/emplist.jsp</result>
+		</action>
+		<action name="addEmp" class="com.baizhi.action.EmpAction" method="addEmp">
+			<result type="redirectAction">queryAll?pageNum=${#request.pageNum }</result>
+		</action>
+		<action name="downLoadEmp" class="com.baizhi.action.EmpAction" method="downLoadEmp" />
+		<action name="downLoadEmps" class="com.baizhi.action.EmpAction" method="downLoadEmps" />
+		<action name="dropEmp" class="com.baizhi.action.EmpAction" method="dropEmp">
+			<result type="redirectAction">queryAll?pageNum=${#request.pageNum }</result>
+		</action>
+		<action name="getChangeEmp" class="com.baizhi.action.EmpAction" method="getChangeEmp">
+			<result>/page-download-ems/emp/updateEmp.jsp</result>
+		</action>
+		<action name="changEmp" class="com.baizhi.action.EmpAction" method="changEmp">
+			<result type="redirectAction">queryAll</result>
+		</action>
+	</package>
+
+</struts>

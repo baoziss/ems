@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 员工表相关映射 -->
+<mapper namespace="com.baizhi.dao.EmpDao">
+	<!-- 员工插入操作 -->
+	<insert id="insertEmp" parameterType="com.baizhi.entity.Emp" >
+		insert into t_emp values (
+			#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{salary,jdbcType=DOUBLE},
+			#{age,jdbcType=INTEGER}
+		)
+	</insert>
+	<!-- 员工删除操作 -->
+	<delete id="deleteEmp" parameterType="String">
+		delete from t_emp where id=#{id}
+	</delete>
+	<!-- 员工修改操作 -->
+	<update id="updateEmp" parameterType="com.baizhi.entity.Emp">
+		update t_emp set name=#{name,jdbcType=VARCHAR},salary=#{salary,jdbcType=DOUBLE},age=#{age,jdbcType=INTEGER}
+		where id=#{id}
+	</update>
+	<!-- 员工查询操作 -->
+	<select id="selectBy" parameterType="com.baizhi.entity.Emp" resultType="com.baizhi.entity.Emp">
+		select id,name,salary,age from t_emp 
+		<where>
+			<if test="id != null and id != ''">
+				id=#{id}
+			</if>
+		</where>
+	</select>
+</mapper>

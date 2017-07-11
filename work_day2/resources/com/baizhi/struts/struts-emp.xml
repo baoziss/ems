@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<constant name="struts.devMode" value="false" />
+	
+	<!-- emp模块 -->
+	<package name="emp" extends="default" namespace="/emp">
+		<!-- 查询所有员工 -->
+		<action name="queryAll" class="com.baizhi.action.EmpAction" method="queryAll" >
+			<result>/ems/emp/emplist.jsp</result>
+		</action>
+		<!-- 添加员工 -->
+		<action name="addEmp" class="com.baizhi.action.EmpAction" method="addEmp">
+			<result type="redirectAction">
+				<param name="namespace">/emp</param>
+				<param name="actionName">queryAll?emp.dept.id=${emp.dept.id }</param>
+			</result>
+		</action>
+		<!-- 删除员工 -->
+		<action name="dropEmp" class="com.baizhi.action.EmpAction" method="dropEmp">
+			<result type="redirectAction">
+				<param name="namespace">/emp</param>
+				<param name="actionName">queryAll?emp.dept.id=${emp.dept.id }</param>
+			</result>
+		</action>
+		<!-- 修改员工 -->
+		<action name="getEmpChange" class="com.baizhi.action.EmpAction" method="getEmpChange">
+			<result>/ems/emp/updateEmp.jsp</result>
+		</action>
+		<action name="changeEmp" class="com.baizhi.action.EmpAction" method="changeEmp">
+			<result type="redirectAction">
+				<param name="namespace">/emp</param>
+				<param name="actionName">queryAll?emp.dept.id=${emp.dept.id }</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>

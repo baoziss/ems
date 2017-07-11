@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	
+	<package name="default" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="input">/catchError.jsp</result>
+		</global-results>
+	</package>
+	<!-- 注册子配置文件 -->
+	<include file="com/baizhi/struts/struts-user.xml" />
+	<include file="com/baizhi/struts/struts-emp.xml" />
+</struts>

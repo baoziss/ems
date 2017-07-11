@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<!-- 用户相关struts -->
+<struts>
+	<package name="user" extends="default">
+		<!-- 用户登录 -->
+		<action name="login" class="com.baizhi.action.UserAction" method="login">
+			<result type="redirectAction">
+				<param name="namespace">/emp</param>
+				<param name="actionName">queryAll</param>
+			</result>
+			<result name="error" type="redirect">/emsdemo/login.jsp?mess=${mess }</result>
+		</action>
+		<!-- 用户注册 -->
+		<action name="regist" class="com.baizhi.action.UserAction" method="regist">
+			<result type="redirect">/emsdemo/login.jsp</result>
+			<result name="error" type="redirect">/emsdemo/regist.jsp?mess=${mess}</result>
+		</action>
+		<!-- 验证码 -->
+		<action name="imageCode" class="com.baizhi.action.UserAction" method="imageCode" />
+	</package>
+</struts>
